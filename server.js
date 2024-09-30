@@ -21,6 +21,7 @@ db.connect((err) => {
     if (err) return console.log("Error connecting to database");
     console.log("Connected to mysql successfully as id: ", db.threadId);
 
+    // Question 1 goes here
     // Get database
     app.set('view engine', 'ejs');
     app.set('views', __dirname + '/views');
@@ -36,6 +37,7 @@ db.connect((err) => {
         });
     });
 
+    // Question 2 goes here
     // Select Database from Providers
     app.get('/providers', (req, res) => {
         db.query('SELECT * FROM providers', (err, results) => {
@@ -48,6 +50,7 @@ db.connect((err) => {
         });
     });
 
+    // Question 3 goes here
     //Select Patient by First Name
     app.get('/search', (req, res) => {
         db.query('SELECT * FROM patients WHERE first_name = ?', [req.query.first_name], (err, results) => {
@@ -59,7 +62,7 @@ db.connect((err) => {
             }
         });
     });
-
+     // Question 4 goes here
     // Select Provider by Specialty
     app.get('/specialty', (req, res) => {
         db.query('SELECT * FROM providers WHERE provider_specialty = ?', [req.query.provider_specialty], (err, results) => {
